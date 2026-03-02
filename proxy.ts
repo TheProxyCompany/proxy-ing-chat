@@ -2,13 +2,28 @@ import { type NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 import { guestRegex, isDevelopmentEnvironment } from "./lib/constants";
 
+const BOTID_PREFIX =
+  "/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3";
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  /*
-   * Playwright starts the dev server and requires a 200 status to
-   * begin the tests, so this ensures that the tests can start
-   */
+  if (pathname.startsWith(BOTID_PREFIX)) {
+    const suffix = pathname.slice(BOTID_PREFIX.length);
+    if (suffix === "/a-4-a/c.js") {
+      return NextResponse.rewrite(
+        new URL(
+          `https://api.vercel.com/bot-protection/v1/challenge${request.nextUrl.search}`,
+        ),
+      );
+    }
+    return NextResponse.rewrite(
+      new URL(
+        `https://api.vercel.com/bot-protection/v1/proxy${suffix}${request.nextUrl.search}`,
+      ),
+    );
+  }
+
   if (pathname.startsWith("/ping")) {
     return new Response("pong", { status: 200 });
   }
