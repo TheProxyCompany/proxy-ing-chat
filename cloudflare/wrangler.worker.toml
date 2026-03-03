@@ -1,0 +1,8 @@
+name = "proxy-ing-router"
+main = "wildcard-router-worker.ts"
+compatibility_date = "2026-03-03"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[vars]
+PAGES_ORIGIN = "proxy-ing-chat.pages.dev"

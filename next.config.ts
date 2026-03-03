@@ -1,20 +1,7 @@
 import type { NextConfig } from "next";
-import { withBotId } from "botid/next/config";
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-  images: {
-    remotePatterns: [
-      {
-        hostname: "avatar.vercel.sh",
-      },
-      {
-        protocol: "https",
-        //https://nextjs.org/docs/messages/next-image-unconfigured-host
-        hostname: "*.public.blob.vercel-storage.com",
-      },
-    ],
-  },
+  reactStrictMode: true,
 };
 
-export default withBotId(nextConfig);
+export default nextConfig;
