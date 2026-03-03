@@ -35,12 +35,8 @@ export default {
       return withCORS(await fetch(request));
     }
 
-    if (isHtmlRequest(request)) {
-      const pagesURL = new URL(url);
-      pagesURL.hostname = env.PAGES_ORIGIN;
-      return fetch(new Request(pagesURL.toString(), request));
-    }
-
-    return withCORS(await fetch(request));
+    const pagesURL = new URL(url);
+    pagesURL.hostname = env.PAGES_ORIGIN;
+    return fetch(new Request(pagesURL.toString(), request));
   },
 };
