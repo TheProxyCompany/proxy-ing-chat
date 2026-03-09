@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "cf:build": "npx @cloudflare/next-on-pages",
-    "cf:deploy": "npx wrangler pages deploy .vercel/output/static --project-name proxy-ing-chat",
-    "cf:deploy-router": "npx wrangler deploy --config cloudflare/wrangler.worker.toml"
+    "cf:deploy": "npx wrangler pages deploy .vercel/output/static --project-name proxy-ing-chat"
   },
   "dependencies": {
     "@ai-sdk/react": "3.0.39",
