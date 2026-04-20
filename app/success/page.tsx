@@ -24,7 +24,7 @@ function SuccessContent() {
       return;
     }
 
-    fetch("https://nazcxjwtkqghgeetlpqm.supabase.co/functions/v1/get-tunnel", {
+    fetch("https://api.theproxycompany.com/v1/tunnels/get", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ session_id: sessionId }),
